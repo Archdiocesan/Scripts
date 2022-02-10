@@ -1,0 +1,17 @@
+sparks buy acheron shield; wait 3;
+sparks buy acheron shield; wait 3;
+sparks buy acheron shield; wait 3;
+sparks buy acheron shield; wait 3;
+sparks buy acheron shield; wait 3;
+sparks buy acheron shield; wait 3;
+sparks buy acheron shield; wait 3;
+sparks buy acheron shield; wait 3;
+sparks buy acheron shield; wait 3;
+sparks buy acheron shield; wait 3;
+sparks buy acheron shield; wait 3;
+sparks buy acheron shield; wait 3;
+sparks buy acheron shield; wait 3;
+sparks buy acheron shield; wait 3;
+sparks buy acheron shield; wait 3;
+sparks buy acheron shield; wait 3;
+input /echo Acheron.txt complete.

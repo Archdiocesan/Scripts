@@ -1,0 +1,1 @@
+bludgeon; wait 4; power attack; wait 4; foot kick; wait 4; sprout smack

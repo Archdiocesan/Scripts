@@ -1,0 +1,51 @@
+bind ^delete Dia II
+
+bind numpad/ Apogee
+bind numpad* gs c toggle autnukemode
+
+bind numpad7 gs c pact alt7
+bind numpad8 gs c pact alt8
+bind numpad9 gs c pact alt9
+
+bind numpad4 gs c pact phys
+bind numpad5 gs c pact mag
+bind numpad6 gs c pact alt
+
+bind numpad1 gs c smartcure
+bind numpad2 Dispel
+bind numpad3 Frazzle
+
+bind numpad0 Stoneskin
+bind numpad. Phalanx
+
+bind pageup Retreat
+bind pagedown Assault
+bind ^pagedown Assault; Attack
+
+bind sysrq Astral Flow
+bind scrolllock Astral Conduit; gs c toggle PactSpamMode
+bind pause Convert
+
+bind ^` Release
+bind ^backspace gs c siphon
+
+bind ^- Cait Sith
+bind ^= Release; wait 1; Atomos
+bind !- Alexander
+bind != Odin
+
+bind ^numpad0 Convert
+bind ^numpad4 Erase
+bind ^numpad5 Paralyna
+bind ^numpad6 Stona
+bind ^numpad7 Blindna
+bind ^numpad8 Silena
+bind ^numpad9 Cursna
+bind ^numpad/ Poisona
+bind ^numpad* Viruna
+
+bind %- cancel Sneak; Sneak <st> 
+bind %= cancel Invisible; Invisible <st>
+
+alias smn exec smn.txt
+input /echo SMN.txt executed.

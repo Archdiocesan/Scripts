@@ -1,0 +1,8 @@
+Afflatus Misery
+
+bind ^numpad1 Cura 
+bind ^numpad2 Cura II
+bind ^numpad3 Cura IV
+
+bind ^` exec whm.txt
+input /echo Misery ready.

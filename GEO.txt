@@ -1,0 +1,40 @@
+alias geo exec GEO.txt
+
+bind ^delete Dia II
+bind ^` Release
+bind ^backspace gs c siphon
+bind ^- Cait Sith
+bind ^= Atomos
+
+bind numpad0 Assault
+bind numpad. Retreat
+bind numpad4 gs c pact phys
+bind numpad5 gs c pact mag
+bind numpad6 gs c pact alt
+bind numpad7 gs c pact alt7
+bind numpad8 gs c pact alt8
+bind numpad9 gs c pact alt9
+
+bind numpad/ Apogee
+bind numpad* Mana Cede
+bind ^numpad/ Astral Flow
+bind ^numpad* Astral Conduit; gs c toggle PactSpamMode
+bind !numpad* gs c toggle PactSpamMode
+
+bind sysrq Alexander
+bind pause Convert
+
+bind numpad1 Dia II
+bind !numpad1 Refresh <me>
+bind numpad2 Dispel
+bind !numpad2 Phalanx <me>
+bind numpad3 Cure III <stpc>
+bind !numpad3 Stoneskin <me>
+
+bind pageup Black Halo
+bind pagedown Shattersoul
+
+bind @- cancel Sneak; Sneak <st> 
+bind @= cancel Invisible; Invisible <st>
+
+input /echo GEO.txt executed.

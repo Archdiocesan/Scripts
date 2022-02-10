@@ -1,0 +1,86 @@
+Afflatus Solace; wait 1;Light Arts
+bind ^delete Dia II
+
+bind numlock Esuna
+bind numpad/ Poisona
+bind numpad* Viruna
+
+bind numpad7 Blindna
+bind numpad8 Silena
+bind numpad9 Cursna
+
+bind numpad4 Erase
+bind numpad5 Paralyna
+bind numpad6 Stona
+
+bind numpad1 gs c smartcure
+bind numpad2 Regen IV
+bind numpad3 Repose
+
+bind ^numpad1 Curaga
+bind ^numpad2 Curaga II
+bind ^numpad3 Curaga IV
+
+bind numpad0 Stoneskin
+bind numpad. Haste
+
+bind pageup Sublimation
+bind pagedown Divine Seal
+bind ^pageup gs c toggle AutoSubMode
+bind ^pagedown Divine Caress
+
+bind sysrq Benediction
+bind scrolllock Asylum
+bind pause Sacrosanctity
+
+bind ^` exec Misery.txt
+bind ^backspace Devotion
+bind %backspace Dispelga
+
+bind ^- Protect V 
+bind ^= Shell V
+
+bind ^numpad0 Blink
+bind ^numpad4 Accession; wait 1; Erase
+bind ^numpad5 Accession; wait 1; Paralyna
+bind ^numpad6 Accession; wait 1; Stona
+bind ^numpad7 Accession; wait 1; Blindna
+bind ^numpad8 Accession; wait 1; Silena
+bind ^numpad9 Accession; wait 1; Cursna
+bind ^numpad/ Accession; wait 1; Poisona
+bind ^numpad* Accession; wait 1; Viruna
+
+bind !numpad1 c3 p0
+bind !numpad2 c3 p1
+bind !numpad3 c3 p2
+bind !numpad4 c3 p3
+bind !numpad5 c3 p4
+bind !numpad6 c3 p5
+
+bind %- cancel Sneak; Sneak <stpc>
+bind %= cancel Invisible; Invisible <stpc>
+
+alias str boost-str
+alias dex boost-dex
+
+alias bf barfira
+alias bw barwatera
+alias bt barthundra
+alias bs barstonra
+alias ba baraera
+alias bb barblizzara
+
+alias bpa barparalyzra
+alias bpe barpetra
+alias bbl barblindra
+alias bsi barsilencera
+alias bpo barpoisonra
+alias bvi barvira
+alias bam baramnesra
+alias bsl barsleepra
+
+alias misery exec Misery.txt
+alias solace exec whm.txt
+alias whm exec whm.txt
+input /echo WHM ready.
+

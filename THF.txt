@@ -1,0 +1,35 @@
+alias thf exec thf.txt
+
+bind numpad/ Reverse Flourish
+bind numpad* Violent Flourish
+
+bind numpad7 input /ja Hide me
+bind numpad8 Bully
+bind numpad9 Flee
+
+bind numpad4 Curing Waltz stpc
+bind numpad5 Divine Waltz
+bind numpad6 Healing Waltz stpc
+
+bind numpad1 gs c toggle AutoSambaMode
+bind numpad2 Box Step
+bind numpad3 Quickstep
+
+bind numpad0 Feint
+bind numpad. Conspirator
+
+bind sysrq Larceny
+bind pause Perfect Dodge
+
+bind pagedown Rudra's Storm
+bind !pagedown Trick Attack; wait 1; Rudra's Storm
+bind ^pagedown Sneak Attack; wait 1; Rudra's Storm
+
+bind pageup Evisceration
+bind !pageup Trick Attack; wait 1; Evisceration
+bind ^pageup Sneak Attack; wait 1; Evisceration
+
+bind %- cancel Sneak; Spectral Jig
+bind %= cancel Invisible
+
+input /echo THF.txt executed.

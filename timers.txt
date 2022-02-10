@@ -1,0 +1,9 @@
+timers c 1 60 up 
+timers c 2 60 up 
+timers c 3 60 up 
+timers c 4 60 up 
+timers c 5 60 up 
+timers c 6 60 up 
+timers c 7 60 up 
+timers c 8 60 up 
+timers c 9 60 up 
