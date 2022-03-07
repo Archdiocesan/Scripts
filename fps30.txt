@@ -1,0 +1,7 @@
+config FrameRateDivisor 2;
+confing ClippingPlane .1;
+echo FPS 30; 
+bind %numlock exec fps60.txt;
+showfps;
+wait 20;
+showfps

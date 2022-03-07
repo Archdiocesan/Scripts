@@ -1,0 +1,9 @@
+gs c set capacity true
+
+lua l craft
+craft delay 20
+dis all
+wait 1
+input /equipset 16 echo
+input /echo Crafting.
+

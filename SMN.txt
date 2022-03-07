@@ -1,7 +1,7 @@
 bind ^delete Dia II
 
 bind numpad/ Apogee
-bind numpad* gs c toggle autnukemode
+bind numpad* protect3 me; wait 1; shell2 me
 
 bind numpad7 gs c pact alt7
 bind numpad8 gs c pact alt8
@@ -12,15 +12,14 @@ bind numpad5 gs c pact mag
 bind numpad6 gs c pact alt
 
 bind numpad1 gs c smartcure
-bind numpad2 Dispel
-bind numpad3 Frazzle
+bind numpad2 Diaga
+bind numpad3 Blizzard
 
 bind numpad0 Stoneskin
 bind numpad. Phalanx
 
 bind pageup Retreat
 bind pagedown Assault
-bind ^pagedown Assault; Attack
 
 bind sysrq Astral Flow
 bind scrolllock Astral Conduit; gs c toggle PactSpamMode
@@ -28,13 +27,14 @@ bind pause Convert
 
 bind ^` Release
 bind ^backspace gs c siphon
+bind %backspace Dispel
 
 bind ^- Cait Sith
 bind ^= Release; wait 1; Atomos
 bind !- Alexander
 bind != Odin
 
-bind ^numpad0 Convert
+bind ^numpad0 Refresh
 bind ^numpad4 Erase
 bind ^numpad5 Paralyna
 bind ^numpad6 Stona
@@ -47,5 +47,31 @@ bind ^numpad* Viruna
 bind %- cancel Sneak; Sneak <st> 
 bind %= cancel Invisible; Invisible <st>
 
+bind ^1 Carbuncle
+bind ^2 Garuda
+bind ^3 Titan
+bind ^4 Shiva
+bind ^5 Ifrit
+bind ^6 Ramuh
+bind ^7 Leviathan
+bind ^8 Fenrir
+bind ^9 Diabolos
+bind ^0 Siren
+
+bind !1 Paralyze
+bind !2 Slow
+bind !3 Silence
+bind !4 Blind
+bind !5 Frazzle
+bind !6 Distract
+bind !7 Dispel
+bind !8 Flurry
+bind !9 Haste
+bind !0 Refresh
+
+ra partypets
 alias smn exec smn.txt
 input /echo SMN.txt executed.
+
+//bind numpad0 fillmode
+//bind numpad. Stoneskin

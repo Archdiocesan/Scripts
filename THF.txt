@@ -7,11 +7,12 @@ bind numpad7 input /ja Hide me
 bind numpad8 Bully
 bind numpad9 Flee
 
-bind numpad4 Curing Waltz stpc
+bind numpad4 Curing Waltz me
 bind numpad5 Divine Waltz
 bind numpad6 Healing Waltz stpc
 
-bind numpad1 gs c toggle AutoSambaMode
+bind numpad1 Haste Samba
+bind ^numpad1 gs c toggle AutoSambaMode
 bind numpad2 Box Step
 bind numpad3 Quickstep
 

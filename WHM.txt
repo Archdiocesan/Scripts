@@ -1,33 +1,32 @@
 Afflatus Solace; wait 1;Light Arts
 bind ^delete Dia II
 
-bind numlock Esuna
-bind numpad/ Poisona
-bind numpad* Viruna
+bind numpad/ Viruna
+bind numpad* Cursna
 
 bind numpad7 Blindna
 bind numpad8 Silena
-bind numpad9 Cursna
-
+bind numpad9 Poisona
+	
 bind numpad4 Erase
 bind numpad5 Paralyna
 bind numpad6 Stona
 
 bind numpad1 gs c smartcure
 bind numpad2 Regen IV
-bind numpad3 Repose
+bind numpad3 Haste
 
 bind ^numpad1 Curaga
 bind ^numpad2 Curaga II
-bind ^numpad3 Curaga IV
+bind ^numpad3 Curaga III
 
-bind numpad0 Stoneskin
+bind numpad0 Esuna
 bind numpad. Haste
 
-bind pageup Sublimation
+bind pageup Divine Caress
 bind pagedown Divine Seal
 bind ^pageup gs c toggle AutoSubMode
-bind ^pagedown Divine Caress
+bind ^pagedown Sublimation
 
 bind sysrq Benediction
 bind scrolllock Asylum
@@ -40,15 +39,15 @@ bind %backspace Dispelga
 bind ^- Protect V 
 bind ^= Shell V
 
-bind ^numpad0 Blink
+bind ^numpad0 Sacrifice; wait 3; Esuna
 bind ^numpad4 Accession; wait 1; Erase
 bind ^numpad5 Accession; wait 1; Paralyna
 bind ^numpad6 Accession; wait 1; Stona
 bind ^numpad7 Accession; wait 1; Blindna
 bind ^numpad8 Accession; wait 1; Silena
-bind ^numpad9 Accession; wait 1; Cursna
-bind ^numpad/ Accession; wait 1; Poisona
-bind ^numpad* Accession; wait 1; Viruna
+bind ^numpad9 Accession; wait 1; Poisona
+bind ^numpad/ Accession; wait 1; Viruna
+bind ^numpad* Accession; wait 1; Cursna
 
 bind !numpad1 c3 p0
 bind !numpad2 c3 p1
@@ -60,8 +59,31 @@ bind !numpad6 c3 p5
 bind %- cancel Sneak; Sneak <stpc>
 bind %= cancel Invisible; Invisible <stpc>
 
+bind ^1 Protectra V
+bind ^2 Shellra V
+bind ^3 Auspice
+bind ^4 Stoneskin 
+bind ^5 Blink
+bind ^6 Aquaveil
+bind ^7 Dark Arts; wait 1; Luminohelix
+bind ^8 Banish III
+bind ^9 Holy
+bind ^0 Holy II
+
+bind !1 Paralyze
+bind !2 Slow
+bind !3 Silence
+bind !4 Addle
+bind !5 Repose
+bind !6 Afflatus Solace; wait 1; Light Arts
+bind !7 dex
+bind !8 str
+bind !9 Arise
+bind !0 Celerity
+
 alias str boost-str
 alias dex boost-dex
+alias int boost-int
 
 alias bf barfira
 alias bw barwatera

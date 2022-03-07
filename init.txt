@@ -1,9 +1,11 @@
 keyboard_allowmmf 1
 
-console_position 15 50
+console_position 50 50
 console_color 255 245 250 250
 console_displayactivity 1
 console_fadedelay 2500
+console_font Arial 11
+console_log 1
 
 game_forceambientlight 0
 game_ambientlight 255 120 120 120
@@ -16,133 +18,120 @@ showfps 0
 fps_position 0 0
 
 config FrameRateDivisor 1
+config ClippingPlane 0.5
+config BattleAutoTarget true; echo Battle Auto Target lock on.
+
+alias init exec init.txt
+
+//NEW
+alias smnr jc smn; jc sub rdm
+alias whms jc whm; jc sub sch
+alias thfd jc thf; jc sub dnc
+
+alias alex buy alexandrite 99 325,000
+
+alias ein valk enter
+alias ein1 valk register "Brunhilde's Chamber"; wait 6; valk enter
+
+bind %b gs c cycle AutoBuffMode
+bind %k gs c facemob
 
 
 //ALIASES
-alias init exec init.txt
-
-//new
+alias ma gs c autonuke
 alias ws gs c autows
-alias nuke gs c autonuke
-alias buffs gs c buffup
-alias samba gs c toggle autosambamode 
+alias tp gs c autows tp
+alias buff gs c buffup
 
-//gearswap shortcuts
-alias en gs enable
+alias en gs enable 
 alias dis gs disable
-alias ech gs c useitem ring2 Echad Ring 
-alias cal gs c useitem ring2 Caliber Ring
-alias tri gs c useitem ring2 Trizek Ring
-alias endo gs c useitem ring2 Endorsement Ring 
-alias fac gs c useitem ring2 Facility Ring
-alias emp gs c useitem ring2 Empress Band
+
+alias trizek gs c useitem ring2 Trizek Ring
+alias endorsement gs c useitem ring2 Endorsement Ring 
+alias echad gs c useitem ring2 Echad Ring 
+alias empress gs c useitem ring2 Empress Band
+alias caliber gs c useitem ring2 Caliber Ring
+alias facility gs c useitem ring2 Facility Ring
+alias potring gs c useitem ring2 Emporox's Ring
+
 alias warpring gs c useitem ring2 Warp Ring
 alias demring gs c useitem ring2 Dim. Ring (Dem)
 alias mearing gs c useitem ring2 Dim. Ring (Mea)
 alias hollaring gs c useitem ring2 Dim. Ring (Holla)
-alias pot gs c useitem ring2 Emporox's Ring
 
-//addon command shortcuts
+//items
+alias rolan input /item "Rolan. daifuku" <me> 
+alias grape input /item "Grape daifuku" <me> 
+alias kitron input /item "Kitron Macaron" <me> 
+alias vile input /item "vile elixir +1" <me>; input /item "vile elixir" <me>
+alias oil input /item "silent oil" <me>
+alias prism input /item "prism powder" <me>
+
+//addon commands
 alias la lua l
 alias ua lua u
 alias ra lua r 
+
+alias drop tr autodrop
+alias dropadd tr drop add
+
 alias bg lookup bgwiki
 alias ah lookup ffxiah
-alias junk sellnpc junk
+
 alias buy bid buy 
-alias trade tradenpc 
-alias t trusts
+alias trade input /targetnpc; tradenpc 
+alias junk lua l sellnpc; sellnpc junk
+alias htmb lua l htmb; wait 1; unalias htmb; htmb
+alias tlens lua l temps; wait 1; temps buy tribulens
+alias rlens lua l temps; wait 1; temps buy radialens 
+
 alias bar lua l barfiller
-alias nobar lua u barfiller
-alias bal lua l balloon
-alias nobal lua u balloon
-
-//items
-alias eat input /item "Rolan. daifuku" <me> 
-alias vile input /item "vile elixir +1" <me>
-alias oil input /item "silent oil" <me>
-alias prism input /item "prism powder" <me>
-alias rem input /item "remedy" <me>
-alias pro input /item "Pro-Ether" <me>
-alias mari input /item "Maringna" <me>
-alis pita input /item "B.E.W. Pitaru" <me>
-
-//shortcuts
-alias mine input /item "Pickaxe" <t>
-alias harvest input /item "Sickle" <t>
-alias chop input /item "Hatchet" <t> 
-alias buckler sparks buy darksteel buckler
-alias acheron exec acheron.txt
-alias tlens temps buy tribulens
-alias rlens temps buy radialens 
-
-
-
-
-
-
-
-
-
+alias eq lua l equipviewer
 
 //KEYBINDS
 bind ^space input /jump
-
-//gearswap
-bind f9 gs c reset DefenseMode
-bind f10 gs c set DefenseMode Physical
-bind f11 gs c set DefenseMode Resist
-bind ^f11 gs c set DefenseMode Magical
-bind f12 gs c cycle IdleMode
-bind ^f12 gs c cycle Weapons
-bind ^!f12 gs reload
-
-bind %b gs c cycle AutoBuffMode
-bind %c gs c toggle AutoCleanupMode
-//bind %i inventory
-bind %k gs c facemob
-bind %n gs c toggle AutoNukeMode
-bind %x gs c toggle Capacity
-bind %y input /retr all
-bind %z gs c toggle AutoWSMode
-bind ^k config BattleAutoTarget true; input /echo Battle Auto Target lock on.; bind ^o exec init.txt
-config BattleAutoTarget false; input /echo Battle Auto Target lock off.
-
-//general 
-bind %1 input /satchel
-bind %2 input /sack
-bind %3 input /case
-bind %4 input /wardrobe
-bind %5 input /wardrobe2
-bind %6 input /quest
-bind %7 input /mission
-//bind %8
-bind %9 input /mount Fenrir
-bind %0 input /dismount
-bind %- cancel Sneak; Sneak <stpc>
-bind %= cancel Invisible; Invisible <stpc>
-
-//paste and fps binds
 bind ^v paste
-bind ^!numlock showfps
-bind ^numlock config FrameRateDivisor 2;input /echo FPS 60
-bind !numlock config FrameRateDivisor 1;input /echo FPS 30
+bind ^/ warp
+bind %` map
 
-//map and minimap 
-bind ` map
-bind %m toggle ffxidb; ffxidb m z 50
-bind %, ffxidb map z-
-bind %. ffxidb map z+
+bind %numlock exec fps30.txt
+bind ^numlock config ClippingPlane 0.2
+bind !numlock config ClippingPlane 1
 
-//enternity
-bind ^enter lua l enternity
-bind @enter lua u enternity
+bind %c gs c toggle AutoCleanupMode
+bind %m gs c toggle AutoNukeMode
+bind %z gs c toggle AutoWSMode
+bind %x gs c toggle Capacity
+
+bind %y retr
+bind %o pop; qtr all; input /echo +
 
 //gameplay
 bind delete input /attack; input /echo Engaging.
 bind home input /check
 bind end down setkey f8 down
 bind end up setkey f8 up
+
+//gearswap
+bind f9 gs c reset DefenseMode
+bind f10 gs c cycle DefenseMode
+bind f11 gs c cycle IdleMode
+bind f12 gs c cycle Weapons
+bind ^!f12 gs reload
+
+//general 
+bind %1 input /wardrobe
+bind %2 input /wardrobe2
+bind %3 input /wardrobe3
+bind %4 input /wardrobe4
+bind %5 input /satchel
+bind %6 input /sack
+bind %7 input /case
+bind %8 input /quest
+bind %9 input /mount Fenrir
+bind %0 input /dismount
+bind %- cancel Sneak; Sneak <stpc>
+bind %= cancel Invisible; Invisible <stpc>
 
 bind ^f1 input /ta <a10>
 bind ^f2 input /ta <a11>
@@ -158,30 +147,28 @@ bind !f5 input /ta <a24>
 bind !f6 input /ta <a25>
 
 
-
-
-
-
-
-
-
-
-
-
 //ADDONS
-//lua l balloon
+
+lua l autoenterkey
+lua l xipivot
+lua l rchat
 lua l enemybar2
 lua l AuctionHelper
-lua l sellNPC
 lua l tradeNPC
+lua l QuickTrade
+lua l pop
 lua l sparks
 lua l skillchains
 lua l superwarp
 lua l xivparty
-lua l xivpetbar
-lua l rchat 
-//lua l partypets
+lua l fuckoff
+lua l xicamera
 
 
 
 
+
+//alias battle rchat tab battle; input /echo Battle chat log ready.; wait 300; rchat tab chat
+//bind ^tab rchat tab chat; rchat show
+//alias soul dis range; dis ammo; gets soultrapper*; gets blank soulplate; wait 1; input /equipset 19 echo 
+//alias trap input /item "Soultrapper 2000" <t>; wait 31; input /echo Soultrapper ready.;input /p <call20>
