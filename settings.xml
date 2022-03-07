@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <autoload>
+    <addon>Debuffed</addon>
+    <addon>ConsoleBG</addon>
+    <addon>shortcuts</addon>
+    <addon>Silence</addon>
+    <addon>Trusts</addon>
+    <addon>cancel</addon>
+    <addon>GearSwap</addon>
+    <addon>itemizer</addon>
+    <addon>JobChange</addon>
+    <addon>organizer</addon>
+    <addon>findAll</addon>
+    <addon>battlemod</addon>
+    <addon>Lookup</addon>
+    <addon>DressUp</addon>
+    <addon>enternity</addon>
+    <addon>temps</addon>
+    <addon>Logger</addon>
+    <addon>Clock</addon>
+    <addon>Treasury</addon>
+    <addon>zonetimer</addon>
+    <addon>autojoin</addon>
+    <addon>indinope</addon>
+    <addon>porter</addon>
+    <addon>roe</addon>
+    <addon>update</addon>
+    <addon>distance</addon>
+    <plugin>DelayMeNot</plugin>
+    <plugin>Config</plugin>
+    <plugin>JaZero</plugin>
+    <plugin>Timers</plugin>
+  </autoload>
+  <profile name="">
+    <region>US</region>
+    <consolekey>Insert</consolekey>
+    <mipmaplevel>2</mipmaplevel>
+    <uiscale>0.8</uiscale>
+    <supersampling>0.7</supersampling>
+    <alwaysenablegamepad>false</alwaysenablegamepad>
+  </profile>
+</settings>

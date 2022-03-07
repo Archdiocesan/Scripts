@@ -1,0 +1,18 @@
+<settings>
+    <global>
+        <X>0</X>
+        <Y>0</Y>
+        <Zoom>10</Zoom>
+        <Opacity>100</Opacity>
+        <ShowPC>true</ShowPC>
+        <ShowNPC>true</ShowNPC>
+        <ShowMob>true</ShowMob>
+        <ShowMarker>true</ShowMarker>
+        <ShowTargetLine>true</ShowTargetLine>
+        <Ranges></Ranges>
+    </global>
+    <Archdiocesan>
+        <X>2162.46</X>
+        <Y>632.676</Y>
+    </Archdiocesan>
+</settings>

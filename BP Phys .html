@@ -1,0 +1,313 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+<title>Summoner 3-hit Physical BP Damage Calculator</title>
+<script type="text/javascript" language="JavaScript">
+ 
+var setNum = 1;
+ 
+// Defaults for equipment panel
+var mainBpd = 40;
+var mainDa = 0;
+var subBpd = 5;
+var subDa = 0;
+var rangeBpd = 0;
+var rangeDa = 0;
+var ammoBpd = 15;
+var ammoDa = 0;
+var headBpd = 7;
+var headDa = 8;
+var neckBpd = 10;
+var neckDa = 0;
+var ear1Bpd = 10;
+var ear1Da = 0;
+var ear2Bpd = 1;
+var ear2Da = 3;
+var bodyBpd = 0;
+var bodyDa = 15;
+var handsBpd = 15;
+var handsDa = 0;
+var ring1Bpd = 0;
+var ring1Da = 5;
+var ring2Bpd = 4;
+var ring2Da = 0;
+var backBpd = 5;
+var backDa = 0;
+var waistBpd = 0;
+var waistDa = 4;
+var legsBpd = 21;
+var legsDa = 4;
+var feetBpd = 7;
+var feetDa = 8;
+ 
+function startup()
+{
+  addSet();
+  copyValues(1);
+  dmgCalc();
+}
+ 
+function dmgEvent()
+{
+  dmgCalc();
+}
+ 
+function dmgCalc()
+{
+  var bpd = +document.getElementById("equipmentBPD").value / 100;
+ 
+  var jobpoints = document.getElementsByName("radioAC");
+  for(var i = 0; i < jobpoints.length; i++) {
+    if(jobpoints[i].checked == true) {
+      bpd = bpd + (+jobpoints[i].value / 100);
+    }
+  }
+ 
+  var da = +document.getElementById("equipmentDA").value / 100;
+  var noMultiChance = 0;
+  var oneMultiChance = 0;
+  var twoMultiChance = 0;
+  
+  // Assumptions:
+  // You only get 2 chances to proc DA per BP.
+  // The max multi-attack procs per BP is 2 (AM3 TA on first hit means no more DA procs)
+  // All hits of the BP are equal damage (it's been theorized the first hit may be stronger)
+  var radioAM = document.getElementById("radioAM1");
+  if(radioAM.checked == true) {
+    var firstHitDa = da + ((1-da) * 0.4);
+    var firstHitTa = ((1-da) * 0.2);
+    noMultiChance = (1 - firstHitDa - firstHitTa) * (1 - da);
+    oneMultiChance = (firstHitDa * (1-da)) + ((1-firstHitDa-firstHitTa) * da);
+    twoMultiChance = firstHitTa + (firstHitDa * da);
+  }
+  else
+  {
+    noMultiChance = (1-da) * (1-da);
+    oneMultiChance = (da * (1-da)) * 2;
+    twoMultiChance = (da * da);
+  }
+  var daModifier = noMultiChance + (oneMultiChance * 4/3) + (twoMultiChance * 5/3);
+  document.getElementById("textResults").textContent = (bpd+1).toFixed(2) + " BPD multiplier * " + daModifier.toFixed(4) + " DA multiplier = " + ((bpd+1)*(daModifier)).toFixed(4) + " Total Multiplier";
+  document.getElementById("textNoMulti").textContent = (noMultiChance*100).toFixed(2) + "%";
+  document.getElementById("textOneMulti").textContent = (oneMultiChance*100).toFixed(2) + "%";
+  document.getElementById("textTwoMulti").textContent = (twoMultiChance*100).toFixed(2) + "%";
+  
+  var lastSet = document.getElementById("lastSet").value;
+  document.getElementById("lastTotal"+lastSet).value = ((bpd+1)*(daModifier)).toFixed(4);
+}
+function equipEvent(recalcSet)
+{
+  equipCalc(recalcSet);
+}
+function equipCalc(recalcSet)
+{
+  var bpd = +document.getElementById("mainBPD"+recalcSet).value + +document.getElementById("subBPD"+recalcSet).value + +document.getElementById("rangeBPD"+recalcSet).value + +document.getElementById("ammoBPD"+recalcSet).value
+    + +document.getElementById("headBPD"+recalcSet).value + +document.getElementById("neckBPD"+recalcSet).value + +document.getElementById("ear1BPD"+recalcSet).value + +document.getElementById("ear2BPD"+recalcSet).value
+    + +document.getElementById("bodyBPD"+recalcSet).value + +document.getElementById("handsBPD"+recalcSet).value + +document.getElementById("ring1BPD"+recalcSet).value + +document.getElementById("ring2BPD"+recalcSet).value
+    + +document.getElementById("backBPD"+recalcSet).value + +document.getElementById("waistBPD"+recalcSet).value + +document.getElementById("legsBPD"+recalcSet).value + +document.getElementById("feetBPD"+recalcSet).value;
+  var da = +document.getElementById("mainDA"+recalcSet).value + +document.getElementById("subDA"+recalcSet).value + +document.getElementById("rangeDA"+recalcSet).value + +document.getElementById("ammoDA"+recalcSet).value
+    + +document.getElementById("headDA"+recalcSet).value + +document.getElementById("neckDA"+recalcSet).value + +document.getElementById("ear1DA"+recalcSet).value + +document.getElementById("ear2DA"+recalcSet).value
+    + +document.getElementById("bodyDA"+recalcSet).value + +document.getElementById("handsDA"+recalcSet).value + +document.getElementById("ring1DA"+recalcSet).value + +document.getElementById("ring2DA"+recalcSet).value
+    + +document.getElementById("backDA"+recalcSet).value + +document.getElementById("waistDA"+recalcSet).value + +document.getElementById("legsDA"+recalcSet).value + +document.getElementById("feetDA"+recalcSet).value;
+  document.getElementById("totalBPD"+recalcSet).value = bpd;
+  document.getElementById("totalDA"+recalcSet).value = da;
+}
+function copyValues(set)
+{
+  document.getElementById("equipmentBPD").value = document.getElementById("totalBPD"+set).value;
+  document.getElementById("equipmentDA").value = document.getElementById("totalDA"+set).value;
+  document.getElementById("lastSet").value = set;
+  dmgCalc();
+}
+function addSet()
+{
+  var newDiv = document.createElement("div");
+  newDiv.id = "set" + setNum;
+  newDiv.style = "float:left; margin:5;";
+  var divText = "<table border='1' cellspacing='0' cellpadding='2'><tr><td>";
+  divText += "<p align='center'>Set Name: <input /></p>";
+  divText += "<table class='EquipTable'>";
+  divText += "  <tr>";
+  divText += "    <th><br/>BPD<br/>DA</th>";
+  divText += "    <td>Main<br/><input id='mainBPD"+setNum+"' size='3' value='"+mainBpd+"' onchange='equipEvent("+setNum+");' /><br /><input id='mainDA"+setNum+"' size='3' value='"+mainDa+"' onchange='equipEvent("+setNum+");' /></td>";
+  divText += "    <td>Sub<br/><input id='subBPD"+setNum+"' size='3' value='"+subBpd+"' onchange='equipEvent("+setNum+");' /><br /><input id='subDA"+setNum+"' size='3' value='"+subDa+"' onchange='equipEvent("+setNum+");' /></td>";
+  divText += "    <td>Range<br/><input id='rangeBPD"+setNum+"' size='3' value='"+rangeBpd+"' onchange='equipEvent("+setNum+");' /><br /><input id='rangeDA"+setNum+"' size='3' value='"+rangeDa+"' onchange='equipEvent("+setNum+");' /></td>";
+  divText += "    <td>Ammo<br/><input id='ammoBPD"+setNum+"' size='3' value='"+ammoBpd+"' onchange='equipEvent("+setNum+");' /><br /><input id='ammoDA"+setNum+"' size='3' value='"+ammoDa+"' onchange='equipEvent("+setNum+");' /></td>";
+  divText += "  </tr>";
+  divText += "  <tr>";
+  divText += "    <th><br/>BPD<br/>DA</th>";
+  divText += "    <td>Head<br/><input id='headBPD"+setNum+"' size='3' value='"+headBpd+"' onchange='equipEvent("+setNum+");' /><br /><input id='headDA"+setNum+"' size='3' value='"+headDa+"' onchange='equipEvent("+setNum+");' /></td>";
+  divText += "    <td>Neck<br/><input id='neckBPD"+setNum+"' size='3' value='"+neckBpd+"' onchange='equipEvent("+setNum+");' /><br /><input id='neckDA"+setNum+"' size='3' value='"+neckDa+"' onchange='equipEvent("+setNum+");' /></td>";
+  divText += "    <td>Ear1<br/><input id='ear1BPD"+setNum+"' size='3' value='"+ear1Bpd+"' onchange='equipEvent("+setNum+");' /><br /><input id='ear1DA"+setNum+"' size='3' value='"+ear1Da+"' onchange='equipEvent("+setNum+");' /></td>";
+  divText += "    <td>Ear2<br/><input id='ear2BPD"+setNum+"' size='3' value='"+ear2Bpd+"' onchange='equipEvent("+setNum+");' /><br /><input id='ear2DA"+setNum+"' size='3' value='"+ear2Da+"' onchange='equipEvent("+setNum+");' /></td>";
+  divText += "  </tr>";
+  divText += "  <tr>";
+  divText += "    <th><br/>BPD<br/>DA</th>";
+  divText += "    <td>Body<br/><input id='bodyBPD"+setNum+"' size='3' value='"+bodyBpd+"' onchange='equipEvent("+setNum+");' /><br /><input id='bodyDA"+setNum+"' size='3' value='"+bodyDa+"' onchange='equipEvent("+setNum+");' /></td>";
+  divText += "    <td>Hands<br/><input id='handsBPD"+setNum+"' size='3' value='"+handsBpd+"' onchange='equipEvent("+setNum+");' /><br /><input id='handsDA"+setNum+"' size='3' value='"+handsDa+"' onchange='equipEvent("+setNum+");' /></td>";
+  divText += "    <td>Ring1<br/><input id='ring1BPD"+setNum+"' size='3' value='"+ring1Bpd+"' onchange='equipEvent("+setNum+");' /><br /><input id='ring1DA"+setNum+"' size='3' value='"+ring1Da+"' onchange='equipEvent("+setNum+");' /></td>";
+  divText += "    <td>Ring2<br/><input id='ring2BPD"+setNum+"' size='3' value='"+ring2Bpd+"' onchange='equipEvent("+setNum+");' /><br /><input id='ring2DA"+setNum+"' size='3' value='"+ring2Da+"' onchange='equipEvent("+setNum+");' /></td>";
+  divText += "  </tr>";
+  divText += "  <tr>";
+  divText += "    <th><br/>BPD<br/>DA</th>";
+  divText += "    <td>Back<br/><input id='backBPD"+setNum+"' size='3' value='"+backBpd+"' onchange='equipEvent("+setNum+");' /><br /><input id='backDA"+setNum+"' size='3' value='"+backDa+"' onchange='equipEvent("+setNum+");' /></td>";
+  divText += "    <td>Waist<br/><input id='waistBPD"+setNum+"' size='3' value='"+waistBpd+"' onchange='equipEvent("+setNum+");' /><br /><input id='waistDA"+setNum+"' size='3' value='"+waistDa+"' onchange='equipEvent("+setNum+");' /></td>";
+  divText += "    <td>Legs<br/><input id='legsBPD"+setNum+"' size='3' value='"+legsBpd+"' onchange='equipEvent("+setNum+");' /><br /><input id='legsDA"+setNum+"' size='3' value='"+legsDa+"' onchange='equipEvent("+setNum+");' /></td>";
+  divText += "    <td>Feet<br/><input id='feetBPD"+setNum+"' size='3' value='"+feetBpd+"' onchange='equipEvent("+setNum+");' /><br /><input id='feetDA"+setNum+"' size='3' value='"+feetDa+"' onchange='equipEvent("+setNum+");' /></td>";
+  divText += "  </tr>";
+  divText += "</table>";
+  divText += "<div align='center'>";
+  divText += "  <p>Total BPD: <input id='totalBPD"+setNum+"' size='4' class='blue' readonly /> Total DA: <input id='totalDA"+setNum+"' size='4' class='orange' readonly /></p>";
+  divText += "  <p>Last Total: <input id='lastTotal"+setNum+"' size='8' readonly /></p>";
+  divText += "  <p><input type='button' onClick='copyValues("+setNum+");' value='Use These Values' /></p>";
+  divText += "</div>";
+  divText += "</td></tr></table>";
+  newDiv.innerHTML = divText;
+  var div = document.getElementById("sets");
+  div.appendChild(newDiv);
+  if (setNum > 1)
+  {
+    document.getElementById("mainBPD"+setNum).value = document.getElementById("mainBPD1").value;
+    document.getElementById("mainDA"+setNum).value = document.getElementById("mainDA1").value;
+    document.getElementById("subBPD"+setNum).value = document.getElementById("subBPD1").value;
+    document.getElementById("subDA"+setNum).value = document.getElementById("subDA1").value;
+    document.getElementById("rangeBPD"+setNum).value = document.getElementById("rangeBPD1").value;
+    document.getElementById("rangeDA"+setNum).value = document.getElementById("rangeDA1").value;
+    document.getElementById("ammoBPD"+setNum).value = document.getElementById("ammoBPD1").value;
+    document.getElementById("ammoDA"+setNum).value = document.getElementById("ammoDA1").value;
+    document.getElementById("headBPD"+setNum).value = document.getElementById("headBPD1").value;
+    document.getElementById("headDA"+setNum).value = document.getElementById("headDA1").value;
+    document.getElementById("neckBPD"+setNum).value = document.getElementById("neckBPD1").value;
+    document.getElementById("neckDA"+setNum).value = document.getElementById("neckDA1").value;
+    document.getElementById("ear1BPD"+setNum).value = document.getElementById("ear1BPD1").value;
+    document.getElementById("ear1DA"+setNum).value = document.getElementById("ear1DA1").value;
+    document.getElementById("ear2BPD"+setNum).value = document.getElementById("ear2BPD1").value;
+    document.getElementById("ear2DA"+setNum).value = document.getElementById("ear2DA1").value;
+    document.getElementById("bodyBPD"+setNum).value = document.getElementById("bodyBPD1").value;
+    document.getElementById("bodyDA"+setNum).value = document.getElementById("bodyDA1").value;
+    document.getElementById("handsBPD"+setNum).value = document.getElementById("handsBPD1").value;
+    document.getElementById("handsDA"+setNum).value = document.getElementById("handsDA1").value;
+    document.getElementById("ring1BPD"+setNum).value = document.getElementById("ring1BPD1").value;
+    document.getElementById("ring1DA"+setNum).value = document.getElementById("ring1DA1").value;
+    document.getElementById("ring2BPD"+setNum).value = document.getElementById("ring2BPD1").value;
+    document.getElementById("ring2DA"+setNum).value = document.getElementById("ring2DA1").value;
+    document.getElementById("backBPD"+setNum).value = document.getElementById("backBPD1").value;
+    document.getElementById("backDA"+setNum).value = document.getElementById("backDA1").value;
+    document.getElementById("waistBPD"+setNum).value = document.getElementById("waistBPD1").value;
+    document.getElementById("waistDA"+setNum).value = document.getElementById("waistDA1").value;
+    document.getElementById("legsBPD"+setNum).value = document.getElementById("legsBPD1").value;
+    document.getElementById("legsDA"+setNum).value = document.getElementById("legsDA1").value;
+    document.getElementById("feetBPD"+setNum).value = document.getElementById("feetBPD1").value;
+    document.getElementById("feetDA"+setNum).value = document.getElementById("feetDA1").value;
+  }
+  equipCalc(setNum);
+  setNum++;
+}
+ 
+</script>
+<style type="text/css">
+body
+{
+  font-family: Verdana, Arial;
+  font-size: 8pt;
+}
+ 
+p{font-size: 10pt; margin:5px 0px 5px 0px;}
+ 
+span{white-space: nowrap;}
+ 
+td
+{
+  font-size: 10pt;
+  padding: 3px;
+}
+ 
+input, select{font-family: inherit;}
+ 
+.blue {border-color: blue;}
+ 
+.orange {border-color: orange;}
+ 
+.big {font-size: 1.6em; vertical-align: middle;}
+ 
+.tooltip {border:1px solid; padding: 4px 2px; background-color: #ffe}
+ 
+.EquipTable TR TH
+{
+  padding: 8px;
+  text-align: right;
+  font-weight: normal;
+}
+ 
+.EquipTable TR TD
+{
+  background-color: threedface;
+  padding: 8px;
+  color: menutext;
+  border-width: 2px;
+  border-style: solid;
+  border-color: threedhighlight threedshadow threedshadow threedhighlight;
+  text-align: center;
+}
+ 
+.radioSpan
+{
+  border: 1px solid #cfcfcf;
+  padding: 2px 10px 1px 3px;
+  line-height: 2em;
+}
+ 
+.rightPane
+{
+  vertical-align: bottom;
+  padding-left: 200;
+}
+ 
+</style>
+</head>
+ 
+<body onload="startup();">
+<h1>Summoner Volt Strike & Pred Claws Damage Calculator</h1>
+ 
+<div id="main">
+<span class="tooltip"><span class="big">&#10068;</span> You can use the helper below to calculate the totals from your equipment and compare different sets.</span>
+<table>
+  <tr>
+    <td>BP Dmg From Equipment:</td>
+    <td><input id="equipmentBPD" size="3" onchange="dmgEvent();" class="blue" /></td>
+    <td rowspan="4" class="rightPane">
+      <span>5x Hits: <label id="textTwoMulti" /></span><br/>
+      <span>4x Hits: <label id="textOneMulti" /></span><br/>
+      <span>3x Hits: <label id="textNoMulti" /></span>
+    </td>
+  </tr>
+  <tr>
+    <td>DA From Equipment:</td>
+    <td><input id="equipmentDA" size="3" onchange="dmgEvent();" class="orange" /></td>
+  </tr>
+  <tr>
+    <td>Nirvana AM3:</td>
+    <td>
+      <label><span class="radioSpan"><input type="radio" id="radioAM1" name="radioAM" value="1" onchange="dmgEvent();">Yes</input></span></label>
+      <label><span class="radioSpan"><input type="radio" id="radioAM0" name="radioAM" value="0" onchange="dmgEvent();" checked>No</input></span></label>
+    </td>
+  </tr>
+  <tr>
+    <td>Astral Conduit Job Points:</td>
+    <td>
+      <label><span class="radioSpan"><input type="radio" id="radioAC0" name="radioAC" value="0" onchange="dmgEvent();" checked>None/Inactive</input></span></label>
+      <label><span class="radioSpan"><input type="radio" id="radioAC10" name="radioAC" value="10" onchange="dmgEvent();">10</input></span></label>
+      <label><span class="radioSpan"><input type="radio" id="radioAC20" name="radioAC" value="20" onchange="dmgEvent();">20</input></span></label>
+    </td>
+  </tr>
+</table>
+<h2><label id="textResults" /></h2>
+</div>
+ 
+<hr/>
+ 
+<input id="lastSet" type="hidden" value="1" />
+<h1>Equipment Bonus Helper <input type='button' onClick='addSet();' value='Add Set' /></h1>
+ 
+<div id="sets" />
+ 
+</body></html>

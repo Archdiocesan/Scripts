@@ -1,0 +1,305 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+<title>Summoner Magic Damage Calculator</title>
+<script type="text/javascript" language="JavaScript">
+
+var setNum = 1;
+
+// Defaults for equipment panel
+var mainMab = 140;
+var mainBpd = 10;
+var subMab = 0;
+var subBpd = 5;
+var rangeMab = 0;
+var rangeBpd = 0;
+var ammoMab = 0;
+var ammoBpd = 15;
+var headMab = 38;
+var headBpd = 10;
+var neckMab = 10;
+var neckBpd = 0;
+var ear1Mab = 0;
+var ear1Bpd = 10;
+var ear2Mab = 0;
+var ear2Bpd = 5;
+var bodyMab = 35;
+var bodyBpd = 10;
+var handsMab = 48;
+var handsBpd = 15;
+var ring1Mab = 0;
+var ring1Bpd = 4;
+var ring2Mab = 0;
+var ring2Bpd = 4;
+var backMab = 0;
+var backBpd = 5;
+var waistMab = 10;
+var waistBpd = 0;
+var legsMab = 35;
+var legsBpd = 17;
+var feetMab = 35;
+var feetBpd = 12;
+
+function startup()
+{
+  addSet();
+  dmgCalc();
+  copyValues(1);
+}
+
+function dmgEvent()
+{
+  dmgCalc();
+}
+
+function dmgCalc()
+{
+  var mab = 100 + +document.getElementById("equipmentMAB").value;
+  var bpd = 100 + +document.getElementById("equipmentBPD").value;
+  var nativeMAB = document.getElementsByName("nativeMAB");
+  for(var i = 0; i < nativeMAB.length; i++) {
+    if(nativeMAB[i].checked == true) {
+      mab = mab + +nativeMAB[i].value;
+    }
+  }
+  var meritMAB = document.getElementsByName("meritMAB");
+  for(var i = 0; i < meritMAB.length; i++) {
+    if(meritMAB[i].checked == true) {
+      mab = mab + +meritMAB[i].value;
+    }
+  }
+  var capacityMAB = document.getElementsByName("capacityMAB");
+  for(var i = 0; i < capacityMAB.length; i++) {
+    if(capacityMAB[i].checked == true) {
+      mab = mab + +capacityMAB[i].value;
+    }
+  }  
+  document.getElementById("textResults").innerHTML = (mab/100) + " MAB multiplier x " + (bpd/100) + " BPD multiplier = " + (mab*bpd/10000) + " Total Multiplier";
+
+  var lastSet = document.getElementById("lastSet").value;
+  document.getElementById("lastTotal"+lastSet).value = (mab*bpd/10000).toFixed(4);
+}
+
+function equipEvent(recalcSet)
+{
+  equipCalc(recalcSet);
+}
+
+function equipCalc(recalcSet)
+{
+  var mab = +document.getElementById("mainMAB"+recalcSet).value + +document.getElementById("subMAB"+recalcSet).value + +document.getElementById("rangeMAB"+recalcSet).value + +document.getElementById("ammoMAB"+recalcSet).value
+    + +document.getElementById("headMAB"+recalcSet).value + +document.getElementById("neckMAB"+recalcSet).value + +document.getElementById("ear1MAB"+recalcSet).value + +document.getElementById("ear2MAB"+recalcSet).value
+    + +document.getElementById("bodyMAB"+recalcSet).value + +document.getElementById("handsMAB"+recalcSet).value + +document.getElementById("ring1MAB"+recalcSet).value + +document.getElementById("ring2MAB"+recalcSet).value
+    + +document.getElementById("backMAB"+recalcSet).value + +document.getElementById("waistMAB"+recalcSet).value + +document.getElementById("legsMAB"+recalcSet).value + +document.getElementById("feetMAB"+recalcSet).value;
+  var bpd = +document.getElementById("mainBPD"+recalcSet).value + +document.getElementById("subBPD"+recalcSet).value + +document.getElementById("rangeBPD"+recalcSet).value + +document.getElementById("ammoBPD"+recalcSet).value
+    + +document.getElementById("headBPD"+recalcSet).value + +document.getElementById("neckBPD"+recalcSet).value + +document.getElementById("ear1BPD"+recalcSet).value + +document.getElementById("ear2BPD"+recalcSet).value
+    + +document.getElementById("bodyBPD"+recalcSet).value + +document.getElementById("handsBPD"+recalcSet).value + +document.getElementById("ring1BPD"+recalcSet).value + +document.getElementById("ring2BPD"+recalcSet).value
+    + +document.getElementById("backBPD"+recalcSet).value + +document.getElementById("waistBPD"+recalcSet).value + +document.getElementById("legsBPD"+recalcSet).value + +document.getElementById("feetBPD"+recalcSet).value;
+
+  document.getElementById("totalMAB"+recalcSet).value = mab;
+  document.getElementById("totalBPD"+recalcSet).value = bpd;
+}
+
+function copyValues(set)
+{
+  document.getElementById("equipmentBPD").value = document.getElementById("totalBPD"+set).value;
+  document.getElementById("equipmentMAB").value = document.getElementById("totalMAB"+set).value;
+  document.getElementById("lastSet").value = set;
+  dmgCalc();
+}
+
+function addSet()
+{
+  var newDiv = document.createElement("div");
+  newDiv.id = "set" + setNum;
+  newDiv.style = "float:left; margin:5;";
+  var divText = "<table border='1' cellspacing='0' cellpadding='2'><tr><td>";
+  divText += "<p align='center'>Set Name: <input /></p>";
+  divText += "<table class='EquipTable'>";
+  divText += "  <tr>";
+  divText += "    <th><br/>BPD<br/>MAB</th>";
+  divText += "	  <td>Main<br/><input id='mainBPD"+setNum+"' size='3' value='"+mainBpd+"' onchange='equipEvent("+setNum+");' /><br /><input id='mainMAB"+setNum+"' size='3' value='"+mainMab+"' onchange='equipEvent("+setNum+");' /></td>";
+  divText += "    <td>Sub<br/><input id='subBPD"+setNum+"' size='3' value='"+subBpd+"' onchange='equipEvent("+setNum+");' /><br /><input id='subMAB"+setNum+"' size='3' value='"+subMab+"' onchange='equipEvent("+setNum+");' /></td>";
+  divText += "    <td>Range<br/><input id='rangeBPD"+setNum+"' size='3' value='"+rangeBpd+"' onchange='equipEvent("+setNum+");' /><br /><input id='rangeMAB"+setNum+"' size='3' value='"+rangeMab+"' onchange='equipEvent("+setNum+");' /></td>";
+  divText += "    <td>Ammo<br/><input id='ammoBPD"+setNum+"' size='3' value='"+ammoBpd+"' onchange='equipEvent("+setNum+");' /><br /><input id='ammoMAB"+setNum+"' size='3' value='"+ammoMab+"' onchange='equipEvent("+setNum+");' /></td>";
+  divText += "  </tr>";
+  divText += "  <tr>";
+  divText += "    <th><br/>BPD<br/>MAB</th>";
+  divText += "	  <td>Head<br/><input id='headBPD"+setNum+"' size='3' value='"+headBpd+"' onchange='equipEvent("+setNum+");' /><br /><input id='headMAB"+setNum+"' size='3' value='"+headMab+"' onchange='equipEvent("+setNum+");' /></td>";
+  divText += "    <td>Neck<br/><input id='neckBPD"+setNum+"' size='3' value='"+neckBpd+"' onchange='equipEvent("+setNum+");' /><br /><input id='neckMAB"+setNum+"' size='3' value='"+neckMab+"' onchange='equipEvent("+setNum+");' /></td>";
+  divText += "    <td>Ear1<br/><input id='ear1BPD"+setNum+"' size='3' value='"+ear1Bpd+"' onchange='equipEvent("+setNum+");' /><br /><input id='ear1MAB"+setNum+"' size='3' value='"+ear1Mab+"' onchange='equipEvent("+setNum+");' /></td>";
+  divText += "    <td>Ear2<br/><input id='ear2BPD"+setNum+"' size='3' value='"+ear2Bpd+"' onchange='equipEvent("+setNum+");' /><br /><input id='ear2MAB"+setNum+"' size='3' value='"+ear2Mab+"' onchange='equipEvent("+setNum+");' /></td>";
+  divText += "  </tr>";
+  divText += "  <tr>";
+  divText += "    <th><br/>BPD<br/>MAB</th>";
+  divText += "	  <td>Body<br/><input id='bodyBPD"+setNum+"' size='3' value='"+bodyBpd+"' onchange='equipEvent("+setNum+");' /><br /><input id='bodyMAB"+setNum+"' size='3' value='"+bodyMab+"' onchange='equipEvent("+setNum+");' /></td>";
+  divText += "    <td>Hands<br/><input id='handsBPD"+setNum+"' size='3' value='"+handsBpd+"' onchange='equipEvent("+setNum+");' /><br /><input id='handsMAB"+setNum+"' size='3' value='"+handsMab+"' onchange='equipEvent("+setNum+");' /></td>";
+  divText += "    <td>Ring1<br/><input id='ring1BPD"+setNum+"' size='3' value='"+ring1Bpd+"' onchange='equipEvent("+setNum+");' /><br /><input id='ring1MAB"+setNum+"' size='3' value='"+ring1Mab+"' onchange='equipEvent("+setNum+");' /></td>";
+  divText += "    <td>Ring2<br/><input id='ring2BPD"+setNum+"' size='3' value='"+ring2Bpd+"' onchange='equipEvent("+setNum+");' /><br /><input id='ring2MAB"+setNum+"' size='3' value='"+ring2Mab+"' onchange='equipEvent("+setNum+");' /></td>";
+  divText += "  </tr>";
+  divText += "  <tr>";
+  divText += "    <th><br/>BPD<br/>MAB</th>";
+  divText += "	  <td>Back<br/><input id='backBPD"+setNum+"' size='3' value='"+backBpd+"' onchange='equipEvent("+setNum+");' /><br /><input id='backMAB"+setNum+"' size='3' value='"+backMab+"' onchange='equipEvent("+setNum+");' /></td>";
+  divText += "    <td>Waist<br/><input id='waistBPD"+setNum+"' size='3' value='"+waistBpd+"' onchange='equipEvent("+setNum+");' /><br /><input id='waistMAB"+setNum+"' size='3' value='"+waistMab+"' onchange='equipEvent("+setNum+");' /></td>";
+  divText += "    <td>Legs<br/><input id='legsBPD"+setNum+"' size='3' value='"+legsBpd+"' onchange='equipEvent("+setNum+");' /><br /><input id='legsMAB"+setNum+"' size='3' value='"+legsMab+"' onchange='equipEvent("+setNum+");' /></td>";
+  divText += "    <td>Feet<br/><input id='feetBPD"+setNum+"' size='3' value='"+feetBpd+"' onchange='equipEvent("+setNum+");' /><br /><input id='feetMAB"+setNum+"' size='3' value='"+feetMab+"' onchange='equipEvent("+setNum+");' /></td>";
+  divText += "  </tr>";
+  divText += "</table>";
+  divText += "<div align='center'>";
+  divText += "  <p>Total BPD: <input id='totalBPD"+setNum+"' size='4' class='blue' readonly /> Total MAB: <input id='totalMAB"+setNum+"' size='4' class='orange' readonly /></p>";
+  divText += "  <p>Last Total: <input id='lastTotal"+setNum+"' size='8' readonly /></p>";
+  divText += "  <p><input type='button' onClick='copyValues("+setNum+");' value='Use These Values' /></p>";
+  divText += "</div>";
+  divText += "</td></tr></table>";  
+  newDiv.innerHTML = divText;  
+  var div = document.getElementById("sets");
+  div.appendChild(newDiv);
+  if (setNum > 1)
+  {
+    document.getElementById("mainMAB"+setNum).value = document.getElementById("mainMAB1").value;
+    document.getElementById("mainBPD"+setNum).value = document.getElementById("mainBPD1").value;
+    document.getElementById("subMAB"+setNum).value = document.getElementById("subMAB1").value;
+    document.getElementById("subBPD"+setNum).value = document.getElementById("subBPD1").value;
+    document.getElementById("rangeMAB"+setNum).value = document.getElementById("rangeMAB1").value;
+    document.getElementById("rangeBPD"+setNum).value = document.getElementById("rangeBPD1").value;
+    document.getElementById("ammoMAB"+setNum).value = document.getElementById("ammoMAB1").value;
+    document.getElementById("ammoBPD"+setNum).value = document.getElementById("ammoBPD1").value;
+    document.getElementById("headMAB"+setNum).value = document.getElementById("headMAB1").value;
+    document.getElementById("headBPD"+setNum).value = document.getElementById("headBPD1").value;
+    document.getElementById("neckMAB"+setNum).value = document.getElementById("neckMAB1").value;
+    document.getElementById("neckBPD"+setNum).value = document.getElementById("neckBPD1").value;
+    document.getElementById("ear1MAB"+setNum).value = document.getElementById("ear1MAB1").value;
+    document.getElementById("ear1BPD"+setNum).value = document.getElementById("ear1BPD1").value;
+    document.getElementById("ear2MAB"+setNum).value = document.getElementById("ear2MAB1").value;
+    document.getElementById("ear2BPD"+setNum).value = document.getElementById("ear2BPD1").value;
+    document.getElementById("bodyMAB"+setNum).value = document.getElementById("bodyMAB1").value;
+    document.getElementById("bodyBPD"+setNum).value = document.getElementById("bodyBPD1").value;
+    document.getElementById("handsMAB"+setNum).value = document.getElementById("handsMAB1").value;
+    document.getElementById("handsBPD"+setNum).value = document.getElementById("handsBPD1").value;
+    document.getElementById("ring1MAB"+setNum).value = document.getElementById("ring1MAB1").value;
+    document.getElementById("ring1BPD"+setNum).value = document.getElementById("ring1BPD1").value;
+    document.getElementById("ring2MAB"+setNum).value = document.getElementById("ring2MAB1").value;
+    document.getElementById("ring2BPD"+setNum).value = document.getElementById("ring2BPD1").value;
+    document.getElementById("backMAB"+setNum).value = document.getElementById("backMAB1").value;
+    document.getElementById("backBPD"+setNum).value = document.getElementById("backBPD1").value;
+    document.getElementById("waistMAB"+setNum).value = document.getElementById("waistMAB1").value;
+    document.getElementById("waistBPD"+setNum).value = document.getElementById("waistBPD1").value;
+    document.getElementById("legsMAB"+setNum).value = document.getElementById("legsMAB1").value;
+    document.getElementById("legsBPD"+setNum).value = document.getElementById("legsBPD1").value;
+    document.getElementById("feetMAB"+setNum).value = document.getElementById("feetMAB1").value;
+    document.getElementById("feetBPD"+setNum).value = document.getElementById("feetBPD1").value;
+  }
+  equipCalc(setNum);
+  setNum++;
+}
+
+</script>
+<style type="text/css">
+body
+{
+  font-family: Verdana, Arial;
+  font-size: 8pt;
+}
+
+p{font-size: 10pt; margin:5px 0px 5px 0px;}
+
+span{white-space: nowrap;}
+
+td
+{
+  font-size: 10pt;
+  padding: 3px;
+}
+
+input, select{font-family: inherit;}
+
+.blue {border-color: blue;}
+
+.orange {border-color: orange;}
+
+.big {font-size: 1.6em; vertical-align: middle;}
+
+.tooltip {border:1px solid; padding: 4px 2px; background-color: #ffe}
+
+.EquipTable TR TH
+{
+  padding: 8px;
+  text-align: right;
+  font-weight: normal;
+}
+
+.EquipTable TR TD
+{
+  background-color: threedface;
+  padding: 8px;
+  color: menutext;
+  border-width: 2px;
+  border-style: solid;
+  border-color: threedhighlight threedshadow threedshadow threedhighlight;
+  text-align: center;
+}
+
+.radioSpan
+{
+  border: 1px solid #cfcfcf;
+  padding: 2px 10px 1px 3px;
+  line-height: 2em;
+}
+</style>
+</head>
+
+<body onload="startup();">
+<h1>Summoner Magic Damage Calculator</h1>
+<div name="main">
+<span class="tooltip"><span class="big">&#10068;</span> You can use the helper below to calculate the totals from your equipment and compare different sets.</span>
+<table>
+  <tr>
+    <td>Avatar Level:</td>
+	<td>
+	  <label><span class="radioSpan"><input type="radio" id="radioLv99" name="nativeMAB" value="40" onchange="dmgEvent();">99</input></span></label>
+	  <label><span class="radioSpan"><input type="radio" id="radioLv113" name="nativeMAB" value="58" onchange="dmgEvent();">113</input></span></label>
+	  <label><span class="radioSpan"><input type="radio" id="radioLv115" name="nativeMAB" value="62" onchange="dmgEvent();">115</input></span></label>
+	  <label><span class="radioSpan"><input type="radio" id="radioLv119" name="nativeMAB" value="69" onchange="dmgEvent();">119</input></span></label>
+	  <label><span class="radioSpan"><input type="radio" id="radioLv120" name="nativeMAB" value="70" onchange="dmgEvent();" checked>120+</input></span></label>
+	</td>
+  </tr>
+  <tr>
+	<td>Avatar MAB from Merits:</td>
+	<td>
+	  <label><span class="radioSpan"><input type="radio" id="radioMerit0" name="meritMAB" value="0" onchange="dmgEvent();"> +0</input></span></label>
+	  <label><span class="radioSpan"><input type="radio" id="radioMerit1" name="meritMAB" value="2" onchange="dmgEvent();"> +2</input></span></label>
+	  <label><span class="radioSpan"><input type="radio" id="radioMerit2" name="meritMAB" value="4" onchange="dmgEvent();"> +4</input></span></label>
+	  <label><span class="radioSpan"><input type="radio" id="radioMerit3" name="meritMAB" value="6" onchange="dmgEvent();"> +6</input></span></label>
+	  <label><span class="radioSpan"><input type="radio" id="radioMerit4" name="meritMAB" value="8" onchange="dmgEvent();"> +8</input></span></label>
+	  <label><span class="radioSpan"><input type="radio" id="radioMerit5" name="meritMAB" value="10" onchange="dmgEvent();" checked> +10</input></span></label>
+	</td>
+  </tr>
+  <tr>
+	<td>Avatar MAB from Gifts:</td>
+	<td>
+	  <label><span class="radioSpan"><input type="radio" id="radioJP0" name="capacityMAB" value="0" onchange="dmgEvent();"> +0</input></span></label>
+	  <label><span class="radioSpan"><input type="radio" id="radioJP1" name="capacityMAB" value="5" onchange="dmgEvent();"> +5 (80)</input></span></label>
+	  <label><span class="radioSpan"><input type="radio" id="radioJP2" name="capacityMAB" value="13" onchange="dmgEvent();"> +13 (405)</input></span></label>
+	  <label><span class="radioSpan"><input type="radio" id="radioJP3" name="capacityMAB" value="23" onchange="dmgEvent();"> +23 (980)</input></span></label>
+	  <label><span class="radioSpan"><input type="radio" id="radioJP4" name="capacityMAB" value="36" onchange="dmgEvent();" checked> +36 (1805)</input></span></label>
+	</td>
+  </tr>
+  <tr>
+    <td>BP Dmg From Equipment:</td>
+	<td><input id="equipmentBPD" size="3" onchange="dmgEvent();" class="blue" /></td>
+  </tr>
+  <tr>
+    <td>MAB From Equipment:</td>
+	<td><input id="equipmentMAB" size="3" onchange="dmgEvent();" class="orange" /></td>
+  </tr>
+</table>
+<h2><label id="textResults" /></h2>
+</div>
+
+<hr/>
+
+<input id="lastSet" type="hidden" value="1" />
+<h1>Equipment Bonus Helper <input type='button' onClick='addSet();' value='Add Set' /></h1>
+
+<div id="sets" />
+
+</body></html>

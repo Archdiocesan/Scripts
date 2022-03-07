@@ -1,0 +1,67 @@
+<settings>
+    <global>
+        <EnableRecast>true</EnableRecast>
+        <EnableBuffs>true</EnableBuffs>
+        <GraphicalMode>true</GraphicalMode>
+        <ExtendText>false</ExtendText>
+        <TextColoring>false</TextColoring>
+        <SlimMode>true</SlimMode>
+        <ShowTenths>false</ShowTenths>
+        <!--One of: Alphabetical, Creation, Duration-->
+        <SortType>Creation</SortType>
+        <Show1HourName>true</Show1HourName>
+        <HighRed>180</HighRed>
+        <HighGreen>14</HighGreen>
+        <HighBlue>32</HighBlue>
+        <MedPercent>0.3</MedPercent>
+        <MedRed>240</MedRed>
+        <MedGreen>130</MedGreen>
+        <MedBlue>39</MedBlue>
+        <LowPercent>0.1</LowPercent>
+        <LowRed>39</LowRed>
+        <LowGreen>255</LowGreen>
+        <LowBlue>20</LowBlue>
+        <TextA>255</TextA>
+        <TextR>250</TextR>
+        <TextG>253</TextG>
+        <TextB>252</TextB>
+        <RecastLowToHigh>true</RecastLowToHigh>
+        <BuffsLowToHigh>false</BuffsLowToHigh>
+        <CustomLowToHigh>true</CustomLowToHigh>
+        <BGA>100</BGA>
+        <BGR>20</BGR>
+        <BGG>20</BGG>
+        <BGB>20</BGB>
+        <RecastFlashDuration>10</RecastFlashDuration>
+        <BuffsFlashDuration>10</BuffsFlashDuration>
+        <CustomFlashDuration>4</CustomFlashDuration>
+        <FlashR>255</FlashR>
+        <FlashG>255</FlashG>
+        <FlashB>0</FlashB>
+        <FontName>Arial</FontName>
+        <FontSize>9</FontSize>
+        <FontBold>false</FontBold>
+        <BarSpacing>5</BarSpacing>
+        <RecastTimerLimit>9</RecastTimerLimit>
+        <BuffsTimerLimit>9</BuffsTimerLimit>
+        <CustomTimerLimit>9</CustomTimerLimit>
+        <!--If true, only items on the recast/buff lists will be displayed-->
+        <WhitelistMode>false</WhitelistMode>
+        <!--List of ability names to display recasts for if in whitelistMode and to exclude otherwise-->
+        <AbilityRecastFilter>Avatar&apos;s Favor</AbilityRecastFilter>
+        <!--List of spell names to display recasts for if in whitelistMode and to exclude otherwise-->
+        <SpellRecastFilter>Protect*|Shell*|Dia*|Stone|Aero*|Blizzard*|Fire*|Water*|Thunder*|Carbuncle|Garuda|Titan|Ifrit|Shiva|Ramuh|Leviathan|Fenrir|Diabolos|Siren|Cait*|*Spirit|Ayame|Shantotto|Kayeel-Payeel|Robel-Akbel|Ulmia|Moogle|Apururu (UC)|Yoran-Oran (UC)|Shantotto II|Nashmeira II|Prishe II|Zeid*|Koru-Moru|Valaineral|Tenzen*|Joachim|AAGK|AAEV|AATT|Kupofried|King of Hearts|August|Amchuchu|Gessho|Balamor|Selh&apos;teus|Semih Lafihna</SpellRecastFilter>
+        <!--List of ability names to display buffs for if in whitelistMode and to exclude otherwise-->
+        <AbilityBuffFilter>Afflatus*|Reraise*|Altana*|Sublimation|Dark Arts|Light Arts|Aerial Armor*|Apogee</AbilityBuffFilter>
+        <!--List of spell names to display buffs for if in whitelistMode and to exclude otherwise-->
+        <SpellBuffFilter>Protect*|Shell*|Reraise*</SpellBuffFilter>
+        <!--If true will show a font outline-->
+        <Stroke>true</Stroke>
+        <RecastX>1300</RecastX>
+        <RecastY>1100</RecastY>
+        <BuffsX>1500</BuffsX>
+        <BuffsY>1100</BuffsY>
+        <CustomX>1500</CustomX>
+        <CustomY>925</CustomY>
+    </global>
+</settings>
