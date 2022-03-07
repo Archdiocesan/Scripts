@@ -1,0 +1,42 @@
+<?xml version="1.1" ?>
+<settings>
+    <!--
+        Colors are customizable based on party / alliance position. Use the colortest command to view the available colors.
+        If you wish for a color to be unchanged from its normal color, set it to 0.
+    -->
+    <global>
+        <a10>0</a10>
+        <a11>0</a11>
+        <a12>0</a12>
+        <a13>0</a13>
+        <a14>0</a14>
+        <a15>0</a15>
+        <a20>0</a20>
+        <a21>0</a21>
+        <a22>0</a22>
+        <a23>0</a23>
+        <a24>0</a24>
+        <a25>0</a25>
+        <abilcol>0</abilcol>
+        <allydmg>0</allydmg>
+        <enfeebcol>61</enfeebcol>
+        <itemcol>256</itemcol>
+        <mob>8</mob>
+        <mobdmg>0</mobdmg>
+        <mobspellcol>36</mobspellcol>
+        <mobwscol>36</mobwscol>
+        <mydmg>0</mydmg>
+        <other>0</other>
+        <otherdmg>20</otherdmg>
+        <p0>160</p0>
+        <p1>160</p1>
+        <p2>160</p2>
+        <p3>160</p3>
+        <p4>160</p4>
+        <p5>160</p5>
+        <partydmg>0</partydmg>
+        <spellcol>0</spellcol>
+        <statuscol>0</statuscol>
+        <wscol>36</wscol>
+    </global>
+</settings>

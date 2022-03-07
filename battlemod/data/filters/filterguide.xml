@@ -1,0 +1,11 @@
+			<!-- <all>		Prevents all of your messages from appearing -->
+            <!-- <casting>	Prevents your "Jim begins casting ____" messages from appearing --> 
+            <!-- <damage> 	Prevents your damage from appearing -->
+            <!-- <healing>	Prevents your healing from appearing --> 
+            <!-- <items>	Prevents your "Jim used an item. Jim gains the effect of Reraise." messages from appearing --> 
+            <!-- <melee>	Prevents your melee ("white") damage from appearing --> 
+            <!-- <misses>	Prevents your misses from appearing --> 
+            <!-- <ranged>	Prevents your ranged damage from appearing --> 
+            <!-- <readies>	Prevents your "Jim readies ____" messages from appearing --> 
+            <!-- <target> 	false = SHOW all actions where I am the target. --> 
+            <!-- <uses>  	Prevents your "Jim uses an item." messages from appearing --> 
