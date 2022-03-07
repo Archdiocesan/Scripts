@@ -1,0 +1,92 @@
+<?xml version="1.1" ?>
+<settings>
+    <global>
+        <archive>false</archive>
+        <battle_all>false</battle_all>
+        <battle_flash>true</battle_flash>
+        <battle_off>false</battle_off>
+        <bg>
+            <alpha>200</alpha>
+            <blue>60</blue>
+            <green>60</green>
+            <red>60</red>
+            <visible>false</visible>
+        </bg>
+        <chat_input>false</chat_input>
+        <chat_input_placement>1</chat_input_placement>
+        <drag_status>true</drag_status>
+        <drops_window>false</drops_window>
+        <enh_whitespace>true</enh_whitespace>
+        <flags>
+            <bold>true</bold>
+            <bottom>false</bottom>
+            <draggable>true</draggable>
+            <italic>false</italic>
+            <right>false</right>
+        </flags>
+        <incoming_pause>false</incoming_pause>
+        <log_dlength>0</log_dlength>
+        <log_dwidth>0</log_dwidth>
+        <log_length>12</log_length>
+        <log_width>500</log_width>
+        <mentions>
+            <All />
+            <Battle />
+            <Chat />
+            <Linkshell />
+            <Linkshell2 />
+            <Party />
+            <Tell />
+            <general>
+
+            </general>
+        </mentions>
+        <padding>0</padding>
+        <pos>
+            <x>0</x>
+            <y>0</y>
+        </pos>
+        <snapback>true</snapback>
+        <split_drops>false</split_drops>
+        <strict_length>true</strict_length>
+        <strict_width>true</strict_width>
+        <text>
+            <alpha>255</alpha>
+            <blue>255</blue>
+            <font>Arial</font>
+            <fonts>
+                <1>Courier New</1>
+                <2>Lucida Sans Typewriter</2>
+            </fonts>
+            <green>255</green>
+            <red>255</red>
+            <size>10</size>
+            <stroke>
+                <alpha>200</alpha>
+                <blue>20</blue>
+                <green>20</green>
+                <red>20</red>
+                <width>2</width>
+            </stroke>
+        </text>
+        <undocked_hide>true</undocked_hide>
+        <undocked_tab>battle</undocked_tab>
+        <undocked_window>false</undocked_window>
+        <vanilla_mode>true</vanilla_mode>
+        <window_visible>true</window_visible>
+    </global>
+    <archdiocesan>
+        <bg>
+            <blue>74</blue>
+            <green>30</green>
+            <red>30</red>
+        </bg>
+        <log_dlength>4</log_dlength>
+        <log_length>10</log_length>
+        <log_width>600</log_width>
+        <pos>
+            <x>1169</x>
+            <y>912</y>
+        </pos>
+    </archdiocesan>
+</settings>
